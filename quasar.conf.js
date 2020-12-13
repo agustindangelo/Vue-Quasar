@@ -58,7 +58,7 @@ module.exports = function (/* ctx */) {
       // gzip: true,
       // analyze: true,
 
-      // Options below are automatically set depending on the env, set them if you want to override
+      // Options below are automatica/animally set depending on the env, set them if you want to override
       // extractCSS: false,
 
       // https://quasar.dev/quasar-cli/handling-webpack
@@ -103,7 +103,7 @@ cfg.module.rules.push({
 
     // animations: 'all', // --- includes all animations
     // https://quasar.dev/options/animations
-    animations: [],
+    animations: ['backInDown', 'backInUp'],
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {

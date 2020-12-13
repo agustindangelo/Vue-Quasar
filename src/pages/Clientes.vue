@@ -92,31 +92,23 @@
             </div>
           </div>
           <q-card-actions align="right">
-            <q-btn label="Guardar" type="submit" color="primary" ></q-btn>
+            <q-btn label="Guardar" type="submit" color="primary" style="width: 150px; margin-bottom: 15px" ></q-btn>
           </q-card-actions>
         </q-form>
       </q-card>
     </div>
-
-    <div class="col-12 col-md">
-      <q-card class="rounded-border">
-        <q-card-section class="bg-primary text-white">
-          <div class="text-h6">Listado de Clientes</div>
-        </q-card-section>
-        <q-list v-for="cliente in clientes" :key="cliente.cuit" bordered separator>
-          <q-item-section class="q-pa-md" >
-            <q-item-label>{{ cliente.nombreApellido }}</q-item-label>
-            <q-item-label caption>{{ cliente.direccion }}</q-item-label>
-          </q-item-section>
-        </q-list>
-      </q-card>
+    <div class="col">
+      <list-clientes :clientes="clientes" @eliminarCliente="eliminarCliente($event)"></list-clientes> 
     </div>
-    
+   
   </div>
 </template>
 
 <script>
+import ListClientes from '../components/List-Clientes.vue';
+
 export default {
+  components: { ListClientes },
   name: "Pedidos",
   data () {
     return {
@@ -157,6 +149,13 @@ export default {
   },
 
   methods: {
+    eliminarCliente(cuit){
+      this.clientes.forEach(cliente => {
+        if (cliente.cuit === cuit) {
+          this.clientes.pop(cliente);
+        }
+      });
+    },
     onSubmit() { 
       var yaRegistrado = false;
       this.clientes.forEach(cliente => {
@@ -201,9 +200,5 @@ export default {
     font-size: 20px;
     color:grey;
     margin-bottom: 10px
-  }
-  .q-btn{
-    width: 150px;
-    margin-bottom: 10px;
   }
 </style>

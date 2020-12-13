@@ -77,6 +77,7 @@ export default {
     return {
       leftDrawerOpen: false,
       links: linksData,
+
       dataClientes: [
         {
           cuit: '20-14252352-1',
